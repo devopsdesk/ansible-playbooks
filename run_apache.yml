@@ -1,0 +1,6 @@
+---
+- hosts: redhat-node
+  remote_user: admin
+  become: yes
+  roles:
+   - apache
