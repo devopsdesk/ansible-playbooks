@@ -1,0 +1,12 @@
+---
+- name: update web servers
+  hosts: redhat-node
+  become: yes
+  tasks:
+  - name: install wget
+    yum:
+      name: wget
+      state: installed
+  - name: Download war
+    shell: wget "{{ url }}"
+

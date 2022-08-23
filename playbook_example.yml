@@ -1,0 +1,14 @@
+---
+- hosts: redhat-node
+  remote_user: admin
+  become: yes
+  tasks:
+   - name: install apache software
+     yum:
+       name: httpd
+       state: present
+   - name: start apache service
+     service:
+       name: httpd
+       state: started
+       enabled: yes

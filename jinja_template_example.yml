@@ -1,0 +1,9 @@
+---
+- hosts: redhat-node
+  remote_user: admin
+  become: yes
+  tasks:
+   - name: 
+     template:
+       src: /tmp/index.html.j2
+       dest: /var/www/html/index.html

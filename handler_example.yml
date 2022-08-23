@@ -1,0 +1,19 @@
+---
+- hosts: ubuntu-node
+  name: Install apache2
+  remote_user: admin
+  become: yes
+  tasks:
+   - name: Install Apache2 on  Ubuntu server
+     apt:
+       name: apache2
+       state: present
+       update_cache: yes
+     notify:
+      - Restart apache2
+
+  handlers:
+   - name: Restart apache2
+     service:
+       name:  apache2
+       state: restarted

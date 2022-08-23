@@ -1,0 +1,19 @@
+---
+- hosts: redhat-node
+  remote_user: admin
+  become: yes
+  vars:
+    DIR: /
+    FILEEXT: "*.txt"
+    DAYSOLD: 7
+  tasks:
+    - name: Template module to interpolate variables and copy the file
+      template:
+        src: /tmp/test.sh
+        dest: /tmp/mydir/test.sh
+
+    - name: Execute the script
+      shell: /tmp/mydir/test.sh
+      register: output
+          
+    - debug: var=output.stdout_lines
